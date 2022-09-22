@@ -19,7 +19,7 @@ public class GameMain extends JPanel implements ActionListener, MouseListener{
 	public static final int ROWS = 3;     
 	public static final int COLS = 3;  
 	public static final String TITLE = "Tic Tac Toe";
-	public static final int CELL_SIZE = 100;
+	public static final int CELL_SIZE = 200;
 	public static final int CANVAS_WIDTH = CELL_SIZE * COLS;
 	public static final int CANVAS_HEIGHT = CELL_SIZE * ROWS;
 	public static final int CELL_PADDING = CELL_SIZE / 6;    
