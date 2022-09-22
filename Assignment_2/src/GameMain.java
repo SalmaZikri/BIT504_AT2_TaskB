@@ -24,7 +24,7 @@ public class GameMain extends JPanel implements ActionListener, MouseListener{
 	public static final int CANVAS_HEIGHT = CELL_SIZE * ROWS;
 	public static final int CELL_PADDING = CELL_SIZE / 6;    
 	public static final int SYMBOL_SIZE = CELL_SIZE - CELL_PADDING * 2;    
-	public static final int SYMBOL_STROKE_WIDTH = 8;
+	public static final int SYMBOL_STROKE_WIDTH = 12;
 	
 	private Board board;
 	private GameState currentState;
