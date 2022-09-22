@@ -21,6 +21,7 @@ public class Board {
 		
 	}
 	
+	
 	public boolean isDraw() {
 	      for (int row = 0; row < GameMain.ROWS; ++row) {
 	         for (int col = 0; col < GameMain.COLS; ++col) {
@@ -31,26 +32,38 @@ public class Board {
 	      }
 	      return true; // no empty cell, it's a draw
 	   }
-	public boolean hasWon(Player thePlayer) {
-	      return (cells[currentRow][0].content == thePlayer         // 3-in-the-row
-	                   && cells[currentRow][1].content == thePlayer
-	                   && cells[currentRow][2].content == thePlayer
-	              || cells[0][currentCol].content == thePlayer      // 3-in-the-column
-	                   && cells[1][currentCol].content == thePlayer
-	                   && cells[2][currentCol].content == thePlayer
-	              || currentRow == currentCol            // 3-in-the-diagonal
-	                   && cells[0][0].content == thePlayer
-	                   && cells[1][1].content == thePlayer
-	                   && cells[2][2].content == thePlayer
-	              || currentRow + currentCol == 2    // 3-in-the-opposite-diagonal
-	                   && cells[0][2].content == thePlayer
-	                   && cells[1][1].content == thePlayer
-	                   && cells[2][0].content == thePlayer);
-	   }
+	
+	/** Return true if the current player "thePlayer" has won after making their move  */
+	public boolean hasWon(Player thePlayer, int playerRow, int playerCol) {
+		
+		// check if player has 3-in-that-row
+		if(cells[playerRow][0].content == thePlayer && cells[playerRow][1].content == thePlayer && cells[playerRow][2].content == thePlayer )
+			return true; 
+		
+		// TODO: Check if the player has 3 in the playerCol.
+		// Hint: Use the row code above as a starting point, remember that it goes cells[row][column] 
+		
+		//THE FIRST ONE IS AS BELOW. COMPLETE ???
+		if(cells[0][playerCol].content == thePlayer && cells[1][playerCol].content == thePlayer && cells[2][playerCol].content == thePlayer) 
+			return true;
+				
+		// 3-in-the-diagonal
+		if( cells[0][0].content == thePlayer && cells[1][1].content == thePlayer && cells[2][2].content == thePlayer)
+			return true;
+		 		
+		// TODO: Check the diagonal in the other direction
+		//JUST WORK OUT THE POSITION OF CELL IN THE OTHER DIRECTION. [0][2] WOULD BE THE UPPER RIGHT
+		if(cells[0][2].content == thePlayer && cells[1][1].content == thePlayer  && cells[2][0].content == thePlayer)
+			return true;
+
+		//no winner, keep playing
+		return false;
+	}
+
 	
 	 
 	public void paint(Graphics g) {
-		g.setColor(Color.gray);
+		g.setColor(Color.YELLOW);
 		for (int row = 1; row < GameMain.ROWS; ++row) {          
 			g.fillRoundRect(0, GameMain.CELL_SIZE * row - GRID_WIDTH_HALF,                
 					GameMain.CANVAS_WIDTH - 1, GRID_WIDTH,                
@@ -75,7 +88,6 @@ public class Board {
 		}
 	}
 	
-		// TODO Auto-generated method stub
 		
 	}
 
